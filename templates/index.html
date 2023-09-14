@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Seamless">
+    <meta name="author" content="Hanfia Mujahid">
+    <title>Google Language Translator By Hanfia Mujahid</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap core CSS -->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">-->
+
+    <link rel="stylesheet" href="https://bootswatch.com/5/cosmo/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        .background-overlay {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.4); /* Adjust the alpha value (0.4) for your desired opacity */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+    </style>
+   
+</head>
+
+<body style="background-color: #c9dae1; color:#fff">
+
+    <div class="container shadow p-3 mb-5 bg-white rounded " style="
+    background-image: url('https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63464.jpg?w=1800&t=st=1694125993~exp=1694126593~hmac=27bbaf417ac587a5e71b6e6a2acaff641c14b137b77a826fec68c7a9bc567287');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;">
+    
+        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                <i class="bi bi-translate" style="font-size: 2rem; color: cornflowerblue;"></i>
+            <h1 class="h1" style="color:#fff"> MultiLanguage Translator</h1>  <sub style="color:#fff">&nbsp  Using Seamless M4T & GOOGLE API</sub>
+         <!--<span class="fs-4"></span>-->   
+            </a>
+        </header>
+
+        <main>
+
+            <!-- radio button start -->
+            <h2 class="h1">Select The Translation Mode</h2>
+
+            <fieldset class="form-group" style="width:50%">
+                <!--<legend class="mt-4">Select The Translation Mode</legend>-->
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1"
+                        value="option1" checked="">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Text To Text Translation
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2"
+                        value="option2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Speech To Speech Translation
+                    </label>
+                </div>
+            </fieldset>
+
+<!---Speech To Speech Translation Model-->
+<div id="SpeechtoSpeech_div" style="display: none;">
+            <!--- radio button end-->
+            <hr>
+            <legend>Speech to Speech Translation Model</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                        <label for="speech_src_language">Source Language:</label>
+                        <select class="form-select"  id="speech_src_language" name="speech_src_language">
+                            <option value="Afrikaans">Afrikaans</option>
+                            <option value="Amharic">Amharic</option>
+                            <option value="Armenian">Armenian</option>
+                            <option value="Assamese">Assamese</option>
+                            <option value="Basque">Basque</option>
+                            <option value="Belarusian">Belarusian</option>
+                            <option value="Bengali">Bengali</option>
+                            <option value="Bosnian">Bosnian</option>
+                            <option value="Bulgarian">Bulgarian</option>
+                            <option value="Burmese">Burmese</option>
+                            <option value="Cantonese">Cantonese</option>
+                            <option value="Catalan">Catalan</option>
+                            <option value="Cebuano">Cebuano</option>
+                            <option value="Central Kurdish">Central Kurdish</option>
+                            <option value="Croatian">Croatian</option>
+                            <option value="Czech">Czech</option>
+                            <option value="Danish">Danish</option>
+                            <option value="Dutch">Dutch</option>
+                            <option value="Egyptian Arabic">Egyptian Arabic</option>
+                            <option value="English">English</option>
+                            <option value="Estonian">Estonian</option>
+                            <option value="Finnish">Finnish</option>
+                            <option value="French">French</option>
+                            <option value="Galician">Galician</option>
+                            <option value="Ganda">Ganda</option>
+                            <option value="Georgian">Georgian</option>
+                            <option value="German">German</option>
+                            <option value="Greek">Greek</option>
+                            <option value="Gujarati">Gujarati</option>
+                            <option value="Halh Mongolian">Halh Mongolian</option>
+                            <option value="Hebrew">Hebrew</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Hungarian">Hungarian</option>
+                            <option value="Icelandic">Icelandic</option>
+                            <option value="Igbo">Igbo</option>
+                            <option value="Indonesian">Indonesian</option>
+                            <option value="Irish">Irish</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Javanese">Javanese</option>
+                            <option value="Kannada">Kannada</option>
+                            <option value="Kazakh">Kazakh</option>
+                            <option value="Khmer">Khmer</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Kyrgyz">Kyrgyz</option>
+                            <option value="Lao">Lao</option>
+                            <option value="Lithuanian">Lithuanian</option>
+                            <option value="Luo">Luo</option>
+                            <option value="Macedonian">Macedonian</option>
+                            <option value="Maithili">Maithili</option>
+                            <option value="Malayalam">Malayalam</option>
+                            <option value="Maltese">Maltese</option>
+                            <option value="Mandarin Chinese">Mandarin Chinese</option>
+                            <option value="Marathi">Marathi</option>
+                            <option value="Meitei">Meitei</option>
+                            <option value="Modern Standard Arabic">Modern Standard Arabic</option>
+                            <option value="Moroccan Arabic">Moroccan Arabic</option>
+                            <option value="Nepali">Nepali</option>
+                            <option value="North Azerbaijani">North Azerbaijani</option>
+                            <option value="Northern Uzbek">Northern Uzbek</option>
+                            <option value="Norwegian Bokmål">Norwegian Bokmål</option>
+                            <option value="Norwegian Nynorsk">Norwegian Nynorsk</option>
+                            <option value="Nyanja">Nyanja</option>
+                            <option value="Odia">Odia</option>
+                            <option value="Polish">Polish</option>
+                            <option value="Portuguese">Portuguese</option>
+                            <option value="Punjabi">Punjabi</option>
+                            <option value="Romanian">Romanian</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Serbian">Serbian</option>
+                            <option value="Shona">Shona</option>
+                            <option value="Sindhi">Sindhi</option>
+                            <option value="Slovak">Slovak</option>
+                            <option value="Slovenian">Slovenian</option>
+                            <option value="Somali">Somali</option>
+                            <option value="Southern Pashto">Southern Pashto</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Standard Latvian">Standard Latvian</option>
+                            <option value="Standard Malay">Standard Malay</option>
+                            <option value="Swahili">Swahili</option>
+                            <option value="Swedish">Swedish</option>
+                            <option value="Tagalog">Tagalog</option>
+                            <option value="Tajik">Tajik</option>
+                            <option value="Tamil">Tamil</option>
+                            <option value="Telugu">Telugu</option>
+                            <option value="Thai">Thai</option>
+                            <option value="Turkish">Turkish</option>
+                            <option value="Ukrainian">Ukrainian</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Vietnamese">Vietnamese</option>
+                            <option value="Welsh">Welsh</option>
+                            <option value="West Central Oromo">West Central Oromo</option>
+                            <option value="Western Persian">Western Persian</option>
+                            <option value="Yoruba">Yoruba</option>
+                            <option value="Zulu">Zulu</option>
+                        </select>
+                        <h5 class="card-title">Model Input</h5>
+                      <div id="controls">
+                        <button id="recordButton" style="
+                        border-radius: 40px;
+                        min-width: 10%;
+                        min-height: 16px;
+                    "><i class="bi bi-record-circle"></i>&nbsp; Record</button>
+                        <button id="pauseButton" disabled style="
+                        border-radius: 40px;
+                        min-width: 10%;
+                        min-height: 16px;
+                    "><i class="bi bi-pause-circle"></i>&nbsp; Pause</button>
+                        <button id="stopButton" disabled style="
+                        border-radius: 40px;
+                        min-width: 10%;
+                        min-height: 16px;
+                    "><i class="bi bi-stop-circle"></i>&nbsp; Stop</button>
+                    </div>
+                 <!--   <div id="formats">Format: start recording to see sample rate</div>-->                    <p><strong>Recordings:</strong></p>
+                    <ol id="recordingsList"></ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                        <label for="trg_language">Targeted Language:</label>
+                        <select class="form-select"  id="trg_language" name="trg_language">
+                            <option value="Bengali">Bengali</option>
+                            <option value="Catalan">Catalan</option>
+                            <option value="Czech">Czech</option>
+                            <option value="Danish">Danish</option>
+                            <option value="Dutch">Dutch</option>
+                            <option value="English">English</option>
+                            <option value="Estonian">Estonian</option>
+                            <option value="Finnish">Finnish</option>
+                            <option value="French">French</option>
+                            <option value="German">German</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Indonesian">Indonesian</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Maltese">Maltese</option>
+                            <option value="Mandarin Chinese">Mandarin Chinese</option>
+                            <option value="Modern Standard Arabic">Modern Standard Arabic</option>
+                            <option value="Northern Uzbek">Northern Uzbek</option>
+                            <option value="Polish">Polish</option>
+                            <option value="Portuguese">Portuguese</option>
+                            <option value="Romanian">Romanian</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Slovak">Slovak</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Swahili">Swahili</option>
+                            <option value="Swedish">Swedish</option>
+                            <option value="Tagalog">Tagalog</option>
+                            <option value="Telugu">Telugu</option>
+                            <option value="Thai">Thai</option>
+                            <option value="Turkish">Turkish</option>
+                            <option value="Ukrainian">Ukrainian</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Vietnamese">Vietnamese</option>
+                            <option value="Welsh">Welsh</option>
+                            <option value="Western Persian">Western Persian</option>
+                        </select>
+                      <h5 class="card-title">Model Output</h5>
+                     
+            <audio controls>
+                <source src="{{ url_for('static', filename='uploads/audio_trg.wav') }}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+
+            {{ html_responce|safe }}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+        </div>
+        <!-----Text To Text Translation-->
+        <div id="TexttoTextDiv">
+            <form method="POST">
+                </br>
+                <fieldset>
+                    <hr>
+                    <legend>Text To Text Translation Model </legend>
+                 <div class="row">
+                    <div class="col-6 form-group" >
+                        <label for="exampleSelect1" class="form-label mt-4">Source Language</label>
+                        <select class="form-select"  Name="src_language">
+                            <option value="af">Afrikaans</option>
+                            <option value="sq">Albanian</option>
+                            <option value="ar">Arabic</option>
+                            <option value="be">Belarusian</option>
+                            <option value="bg">Bulgarian</option>
+                            <option value="ca">Catalan</option>
+                            <option value="zh-CN">Chinese Simplified</option>
+                            <option value="zh-TW">Chinese Traditional</option>
+                            <option value="hr">Croatian</option>
+                            <option value="cs">Czech</option>
+                            <option value="da">Danish</option>
+                            <option value="nl">Dutch</option>
+                            <option value="en">English</option>
+                            <option value="eo">Esperanto</option>
+                            <option value="et">Estonian</option>
+                            <option value="tl">Filipino</option>
+                            <option value="fi">Finnish</option>
+                            <option value="fr">French</option>
+                            <option value="gl">Galician</option>
+                            <option value="de">German</option>
+                            <option value="el">Greek</option>
+                            <option value="iw">Hebrew</option>
+                            <option value="hi">Hindi</option>
+                            <option value="hu">Hungarian</option>
+                            <option value="is">Icelandic</option>
+                            <option value="id">Indonesian</option>
+                            <option value="ga">Irish</option>
+                            <option value="it">Italian</option>
+                            <option value="ja">Japanese</option>
+                            <option value="ko">Korean</option>
+                            <option value="la">Latin</option>
+                            <option value="lv">Latvian</option>
+                            <option value="lt">Lithuanian</option>
+                            <option value="mk">Macedonian</option>
+                            <option value="ms">Malay</option>
+                            <option value="mt">Maltese</option>
+                            <option value="no">Norwegian</option>
+                            <option value="fa">Persian</option>
+                            <option value="pl">Polish</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ro">Romanian</option>
+                            <option value="ru">Russian</option>
+                            <option value="sr">Serbian</option>
+                            <option value="sk">Slovak</option>
+                            <option value="sl">Slovenian</option>
+                            <option value="es">Spanish</option>
+                            <option value="sw">Swahili</option>
+                            <option value="sv">Swedish</option>
+                            <option value="th">Thai</option>
+                            <option value="tr">Turkish</option>
+                            <option value="uk">Ukrainian</option>
+                            <option value="ur">Urdu</option>
+                            <option value="vi">Vietnamese</option>
+                            <option value="cy">Welsh</option>
+                            <option value="yi">Yiddish</option>
+                        </select>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="exampleSelect1" class="form-label mt-4">Targeted Language</label>
+                        <select class="form-select"  Name="target_language">
+                            <option value="ur">Urdu</option>
+                        </select>
+                    </div>
+                </div>
+                    <div class="row">
+
+                        <div class="col-6 form-group" >
+                            <label for="exampleTextarea" class="form-label mt-4">Input Text</label>
+                            <textarea class="form-control" rows="3"
+                                name="InputText">{{ input_text }}</textarea>
+                        </div>
+                        <!-- div for button start -->
+
+                        <!-- div for button end  -->
+                        <div class="col-6 form-group" >
+                            <label for="exampleTextarea" class="form-label mt-4">Output Translation</label>
+                            <textarea class="form-control"  rows="3"
+                                name="OutText">{{ output_text }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row p-4">
+                        <button type="submit" class="btn btn-primary" name="btn_translate">Translate</button>
+                    </div>
+                </fieldset>
+            </form>
+</div>
+
+        </main>
+        <footer class="pt-5 my-5 text-muted border-top" style="color: white !important;">
+            Created by Hanfia Sattar &middot; &copy; 2023
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/recorder.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        // Get references to the radio buttons and the divs
+        var radio1 = document.getElementById('optionsRadios1');
+        var radio2 = document.getElementById('optionsRadios2');
+        var textToTextDiv = document.getElementById('TexttoTextDiv');
+        var speechToSpeechDiv = document.getElementById('SpeechtoSpeech_div');
+    
+        // Add event listeners to the radio buttons
+        radio1.addEventListener('change', function() {
+            if (radio1.checked) {
+                // If option1 is selected, display TextToTextDiv and hide SpeechToSpeechDiv
+                textToTextDiv.style.display = 'block';
+                speechToSpeechDiv.style.display = 'none';
+            }
+        });
+    
+        radio2.addEventListener('change', function() {
+            if (radio2.checked) {
+                // If option2 is selected, display SpeechToSpeechDiv and hide TextToTextDiv
+                speechToSpeechDiv.style.display = 'block';
+                textToTextDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
