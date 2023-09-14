@@ -1,5 +1,3 @@
-
-# A very simple Flask Hello World app for you to get started with...
 import os
 import shutil
 from flask import Flask, render_template, request, url_for, jsonify
